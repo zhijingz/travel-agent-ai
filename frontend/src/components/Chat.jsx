@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
-import {getWaveBlob } from "webm-to-wav-converter";
 
 const downloadMessageAsPDF = (content, index) => {
     
@@ -99,7 +98,7 @@ function Chat({ onLocationSearch, agentType, initialMessage, agentInitials, dire
           ...prev,
           {
             content:
-              "Sorry, there was an error connecting to the AI agent. Please make sure the Flask server is running at http://127.0.0.1:5002/",
+              "Sorry, there was an error connecting to the AI agent. Please try reloading...",
             isUser: false,
           },
         ]);

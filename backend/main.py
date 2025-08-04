@@ -5,11 +5,10 @@ import os
 import re
 import wave
 import json
-from vosk import Model, KaldiRecognizer
 
 app = Flask(__name__, static_folder='dist', static_url_path='/') 
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-2023')
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/api/*": {"origins": "https://travel-agent-ai-production.up.railway.app"}})
 
 from flask import send_from_directory
 

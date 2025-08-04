@@ -1,0 +1,13 @@
+chromadb
+langchain_community
+groq
+agno
+flask
+flask_cors
+praw
+spacy
+-m spacy download en_core_web_sm
+textblob
+vosk
+ollama
+

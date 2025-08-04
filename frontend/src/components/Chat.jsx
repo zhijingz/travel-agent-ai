@@ -42,7 +42,7 @@ function Chat({ onLocationSearch, agentType, initialMessage, agentInitials, dire
     setUsePdf(e.target.checked);
   };
 
-  const API_BASE_URL = "http://127.0.0.1:5002";
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleSendMessage = useCallback(
     async (questionOverride = null) => {

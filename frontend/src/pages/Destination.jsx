@@ -5,6 +5,7 @@ import { useMapEvent, MapContainer, TileLayer, Marker, Popup, useMap } from 'rea
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import chat from 'daisyui/components/chat';
+import trees from '/src/assets/trees.jpg'
 
 function MapClickHandler({ onMapClick }) {
   useMapEvent('click', (e) => {
@@ -63,6 +64,7 @@ function StreamingResponse({ content, speed = 20 }) {
 }
 
 function Destination() {
+   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const initialMessage =
   "Hello! I'm the local travel guide, your travel specialist. I can provide cultural insights, safety tips, and local customs for any destination! My expertise is in Europe but ask me about anything!";
   const [searchlocation, setLocation] = useState('');
@@ -96,7 +98,7 @@ function Destination() {
     setLoading({ [`${coords.lat},${coords.lng}`]: true });
 
     try {
-      const res = await fetch('http://localhost:5002/api/expert', {
+      const res = await fetch(`${API_BASE_URL}/api/expert`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ location, query: 'travel' }),
@@ -156,7 +158,7 @@ return (
     <div className="relative text-gray-100 min-h-screen px-4 py-6">
       {/* Background Image with Overlay */}
       <img
-        src="src/assets/trees.jpg"
+        src={trees}
         alt="Beautiful sea"
         className="fixed inset-0 w-full h-full object-cover opacity-60 brightness-70 -z-10"
         draggable="false"

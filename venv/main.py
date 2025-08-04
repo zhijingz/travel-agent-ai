@@ -7,9 +7,15 @@ import wave
 import json
 from vosk import Model, KaldiRecognizer
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='dist', static_url_path='/') 
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-2023')
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+
+from flask import send_from_directory
+
+@app.route("/")
+def serve_index():
+    return send_from_directory(app.static_folder, "index.html")
 
 
 pdf_path = "agents/data/"

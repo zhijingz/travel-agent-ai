@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
 import jsPDF from "jspdf";
+import pink from '/src/assets/pink.jpg'
 
 // --- Markdown rendering utility ---
 const renderContent = (content) => {
@@ -130,6 +131,7 @@ function StreamingResponse({ content, speed = 20 }) {
 }
 
 function Itinerary() {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const downloadItinerary = () => {
     if (!fullItinerary) return;
     
@@ -249,7 +251,7 @@ function Itinerary() {
         pace: formData.pace
       };
       
-      const response = await fetch('http://localhost:5002/api/itinerary', {
+      const response = await fetch(`${API_BASE_URL}/api/itinerary`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -280,7 +282,7 @@ function Itinerary() {
   return (
     <div className="relative text-gray-100 min-h-screen px-4 py-6">
       <img
-        src="/src/assets/pink.jpg"
+        src={pink}
         className="fixed inset-0 w-full h-full object-cover opacity-60 brightness-70 -z-10"
         draggable="false"
       />

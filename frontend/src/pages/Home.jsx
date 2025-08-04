@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Chat from '../components/Chat';
+import sea from '/src/assets/sea.jpg'
 
 function Home() {
   const initialMessage =
@@ -10,7 +11,7 @@ function Home() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-[100vh] w-full">
         <img
-          src="src/assets/sea.jpg"
+          src={sea}
           alt="Beautiful sea"
           className="absolute inset-0 w-full h-full object-cover opacity-90 brightness-120 z-0"
           draggable="false"
